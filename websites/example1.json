@@ -1,0 +1,201 @@
+{
+  "name": "FrenchStream",
+  "url": "http://ww1.french-stream.co",
+  "rules": [{
+    "name": "homepage",
+    "route": "%{MAIN_URL}/",
+    "initialDelay": 0,
+    "delay": 1,
+    "timeUnit": "MINUTES",
+    "actions": [{
+      "name": "last_films",
+      "selector": ".pages:first-child .short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "type",
+        "selector": ".film-ripz",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }, {
+      "name": "last_series",
+      "selector": ".pages:nth-of-type(2) .short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "state",
+        "selector": ".mli-eps",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }, {
+      "name": "last_mangas",
+      "selector": ".pages:nth-of-type(3) .short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "state",
+        "selector": ".mli-eps",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }, {
+      "name": "last_boxoffice",
+      "selector": ".pages:nth-of-type(4) .short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "type",
+        "selector": ".film-ripz",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }]
+  }, {
+    "name": "boxoffice",
+    "route": "%{MAIN_URL}/page/(:num)/",
+    "crawler": true,
+    "actions": [{
+      "name": "list_boxoffice",
+      "selector": ".short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "type",
+        "selector": ".film-ripz",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }]
+  }, {
+    "name": "films",
+    "route": "%{MAIN_URL}/films-en-streaming/page/(:num)/",
+    "defaultParams": ["1"],
+    "crawler": true,
+    "delay": "1",
+    "timeUnit": "HOURS",
+    "actions": [{
+      "name": "list_films",
+      "selector": ".short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "type",
+        "selector": ".film-ripz",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }]
+  }, {
+    "name": "series",
+    "route": "%{MAIN_URL}/serie-tv-en-streaming/page/(:num)/",
+    "defaultParams": ["1"],
+    "crawler": true,
+    "delay": "1",
+    "timeUnit": "HOURS",
+    "actions": [{
+      "name": "list_series",
+      "selector": ".short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "state",
+        "selector": ".mli-eps",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }]
+  }, {
+    "name": "mangas",
+    "route": "%{MAIN_URL}/mangas/page/(:num)/",
+    "defaultParams": ["1"],
+    "crawler": true,
+    "delay": "1",
+    "timeUnit": "HOURS",
+    "actions": [{
+      "name": "list_mangas",
+      "selector": ".short-in",
+      "datas": [{
+        "name": "title",
+        "selector": ".short-title",
+        "format": "string:trim"
+      }, {
+        "name": "lang",
+        "selector": ".film-verz",
+        "format": "string:trim"
+      }, {
+        "name": "state",
+        "selector": ".mli-eps",
+        "format": "string:trim"
+      }, {
+        "name": "picture",
+        "selector": "img",
+        "format": "string:attr[src]:trim"
+      }]
+    }]
+  }]
+}
